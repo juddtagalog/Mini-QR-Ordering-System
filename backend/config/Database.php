@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../core/Env.php';
-Env::load(__DIR__ . '/../../env');
+Env::load(__DIR__ . '/../.env');
 class Database
 {
     private static ?PDO $instance = null;

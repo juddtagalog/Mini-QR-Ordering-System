@@ -22,7 +22,7 @@ abstract class Controller
     {
         $this->jsonResponse([
             'success' => true,
-            'message' -> $message,
+            'message' => $message,
             'data' => $data,
         ], $statusCode);
     }

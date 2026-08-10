@@ -19,7 +19,7 @@ CREATE TABLE products (
 CREATE TABLE orders(
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     customer_name VARCHAR(100) DEFAULT NULL,
-    table_number VARCHAR(20) NOT NULL,
+    table_number VARCHAR(20) DEFAULT NULL,
     items JSON NOT NULL,
     total_amount DECIMAL(10, 2) NOT NULL CHECK (total_amount >= 0),
     status ENUM('Pending', 'Paid', 'Failed') NOT NULL DEFAULT 'Pending',
