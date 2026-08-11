@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --color-bg: #fbfaf6;
+  --color-surface: #ffffff;
+  --color-ink: #201f1c;
+  --color-ink-muted: #6b6860;
+  --color-primary: #1f6f5c;
+  --color-primary-dark: #164f42;
+  --color-accent: #e0a72e;
+  --color-accent-dark: #b9860e;
+  --color-danger: #c4483a;
+  --color-border: #e8e4d9;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
