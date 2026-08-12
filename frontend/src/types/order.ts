@@ -27,7 +27,7 @@ export interface CreateOrderItemPayload {
 }
 
 export interface CreateOrderPayload {
-    table_number: number,
+    table_number: string | null,
     customer_name?: string,
     items: CreateOrderItemPayload[],
 }
