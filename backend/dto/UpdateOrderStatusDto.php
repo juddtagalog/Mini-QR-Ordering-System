@@ -18,7 +18,7 @@ class UpdateOrderStatusDto
         return $errors;
     }
 
-    public static function normalize(array $input): array
+    public static function normalize(array $input): string
     {
         return $input['status'];
     }

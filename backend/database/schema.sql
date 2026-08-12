@@ -1,4 +1,4 @@
-CREATE DATABASE mini_qr_db;
+CREATE DATABASE IF NOT EXISTS mini_qr_db;
 USE mini_qr_db;
 
 CREATE TABLE products (
