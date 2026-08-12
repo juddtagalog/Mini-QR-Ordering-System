@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router';
 import { QrCode } from 'lucide-react';
 import Navbar from '../components/common/Navbar';
 import MenuList from '../components/menu/MenuList';
@@ -8,18 +9,17 @@ import MockPaymentModal from '../components/payment/MockPaymentModal';
 import { createOrder, ApiRequestError } from '../api/apiService';
 import type { CartItem, Order, Product } from '../types';
 
-function getTableNumberFromUrl(): string {
-  return new URLSearchParams(window.location.search).get('table') ?? '';
-}
 
 export default function CustomerMenu() {
-  const [tableNumber, setTableNumber] = useState(getTableNumberFromUrl);
+  const [searchParams] = useSearchParams();
+  const [tableNumber, setTableNumber] = useState(() => searchParams.get('table') ?? '');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   const [checkoutError, setCheckoutError] = useState('');
   const [confirmedOrder, setConfirmedOrder] = useState<Order | null>(null);
+
 
   const cartItemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const cartTotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -98,7 +98,7 @@ export default function CustomerMenu() {
     <>
       <Navbar cartItemCount={cartItemCount} onCartClick={() => setIsCartOpen(true)} />
 
-      <div className="mx-auto flex max-w-[960px] flex-wrap items-center gap-3 px-6 pt-6">
+      <div className="mx-auto flex max-w-240 flex-wrap items-center gap-3 px-6 pt-6">
         <label htmlFor="table-number" className="text-sm font-medium text-ink-muted">
           Table
         </label>
@@ -121,11 +121,11 @@ export default function CustomerMenu() {
       </div>
 
       {checkoutError && (
-        <p className="mx-auto max-w-[960px] px-6 pt-3 text-sm text-danger">{checkoutError}</p>
+        <p className="mx-auto max-w-240 px-6 pt-3 text-sm text-danger">{checkoutError}</p>
       )}
 
       {confirmedOrder && (
-        <div className="mx-auto max-w-[960px] px-6 pt-4">
+        <div className="mx-auto max-w-240 px-6 pt-4">
           <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
             <p className="font-semibold text-primary-dark">
               Order #{confirmedOrder.id} placed for table {confirmedOrder.table_number}
