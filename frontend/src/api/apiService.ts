@@ -6,7 +6,7 @@ import type {
     Product,
 } from '../types';
 
-const API_BASE_URL = 'http://localhost:8000/api';
+const API_BASE_URL = 'http://192.168.0.118:8000/api';
 
 export class ApiRequestError extends Error {
     status: number;
@@ -49,7 +49,7 @@ export function getProducts(): Promise<Product[]> {
 }
 
 export function getProduct(id: number): Promise<Product> {
-    return request<Product>('/products/${id}');
+    return request<Product>(`/products/${id}`);
 }
 
 export function getOrders(): Promise<Order[]> {
@@ -57,7 +57,7 @@ export function getOrders(): Promise<Order[]> {
 }
 
 export function getOrder(id: number): Promise<Order> {
-    return request<Order>('/orders/${id}');
+    return request<Order>(`/orders/${id}`);
 }
 
 export function createOrder(payload: CreateOrderPayload): Promise<Order> {
@@ -68,7 +68,7 @@ export function createOrder(payload: CreateOrderPayload): Promise<Order> {
 }
 
 export function updateOrderStatus(id: number, status: OrderStatus): Promise<Order> {
-    return request<Order>('/orders/${id}/status', {
+    return request<Order>(`/orders/${id}/status`, {
         method: 'PUT',
         body: JSON.stringify({status}),
     })
