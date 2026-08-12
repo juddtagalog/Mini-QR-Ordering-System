@@ -55,3 +55,54 @@ DB_NAME=mini_qr_db
 DB_USER=root
 DB_PASSWORD=your_password_here
 
+5. Install frontend Dependencies
+cd frontend
+npm install
+
+6. run the app
+you will need two terminals
+first will run the php backend server
+
+Terminal 1
+cd backend/public
+php -S 0.0.0.0:8000 index.php
+
+second you will need to run the frontend 
+Terminal 2
+cd frontend
+npm run dev -- --host 
+
+Accessing the app
+on your computer you can view the customer menu on http://localhost:5173
+and admin view on http://localhost:5173/admin
+
+on your phone or tablet (has to be same wifi)
+(assuming they are at the restaurant and scan the qr)
+
+Customer menu at 192.168.0.118:5173/?table=
+admin view at 192.168.0.118:5173/admin
+
+Usage
+Customer flow
+1. Customer enters their table number or scans table qr code (table number prefilled)
+2. Browse the menu
+3. Click add on items opening cart drawer
+4. adjust quantities or remove items in cart
+5. click checkout and simulated payment happens
+6. order confirmation with total amount due
+7. order is sent and admin will have to refresh their view to check latest orders
+
+admin flow
+1. go to url/admin
+2. view all incoming orders sorted by recency
+3. update order status
+4. click refresh to reload history
+
+qr code flow
+1. enter a table number on the customer page
+2. click show table qr
+3. scan generated qr
+4. menu opens with table number pre filled
+
+
+
