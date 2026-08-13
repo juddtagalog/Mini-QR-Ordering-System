@@ -104,5 +104,5 @@ qr code flow
 3. scan generated qr
 4. menu opens with table number pre filled
 
-
-
+## License
+Mit @ 2026 Judd Tagalog
